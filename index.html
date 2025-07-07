@@ -38,3 +38,39 @@
     </div>
   </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>เครื่องคิดเลข</title>
+  <style>
+    body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f0f0f0; }
+    .calc { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: 260px; }
+    #result { font-size: 24px; text-align: right; margin-bottom: 10px; padding: 10px; background: #eee; border-radius: 8px; }
+    button { width: 60px; height: 50px; font-size: 18px; margin: 5px; border: none; border-radius: 8px; background: #ddd; cursor: pointer; }
+    button.op { background: #f9a825; color: white; }
+    button.eq { background: #43a047; color: white; width: 125px; }
+  </style>
+</head>
+<body>
+  <div class="calc">
+    <div id="result">0</div>
+    <div>
+      <button onclick="press('7')">7</button><button onclick="press('8')">8</button><button onclick="press('9')">9</button><button class="op" onclick="press('/')">/</button><br>
+      <button onclick="press('4')">4</button><button onclick="press('5')">5</button><button onclick="press('6')">6</button><button class="op" onclick="press('*')">*</button><br>
+      <button onclick="press('1')">1</button><button onclick="press('2')">2</button><button onclick="press('3')">3</button><button class="op" onclick="press('-')">-</button><br>
+      <button onclick="press('0')">0</button><button onclick="clearResult()">C</button><button class="eq" onclick="calculate()">=</button><button class="op" onclick="press('+')">+</button>
+    </div>
+  </div>
+  <script>
+    let res = document.getElementById("result"), exp = "";
+    function press(val) { exp += val; res.innerText = exp; }
+    function clearResult() { exp = ""; res.innerText = "0"; }
+    function calculate() {
+      try { exp = eval(exp).toString(); res.innerText = exp; }
+      catch { res.innerText = "Error"; exp = ""; }
+    }
+  </script>
+</body>
+</html>
